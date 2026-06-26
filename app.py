@@ -1,5 +1,14 @@
+import os
 import streamlit as st
 from recommender import load_client_and_model, get_recommendation
+
+# 배포(Streamlit Cloud) 환경에서는 secrets에 저장한 키를 환경변수로 넘겨준다.
+# (로컬에서는 .env가 사용되므로 secrets가 없어도 그냥 넘어간다.)
+try:
+    if "ANTHROPIC_API_KEY" in st.secrets:
+        os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
+except Exception:
+    pass
 
 st.set_page_config(page_title="오늘 뭐 먹지?", page_icon="🍽️")
 

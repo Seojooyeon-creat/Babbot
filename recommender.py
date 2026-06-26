@@ -1,5 +1,8 @@
 import anthropic
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # app.py와 main.ipynb가 공유하는 밥 추천 핵심 로직
 
